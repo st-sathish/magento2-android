@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single"
+        android:id="@+id/category">
+        <item
+            android:id="@+id/retail"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_retail" />
+        <item
+            android:id="@+id/whole_sale"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_wholesale" />
+    </group>
+    <group android:checkableBehavior="single"
+        android:id="@+id/orders">
+        <item
+            android:id="@+id/my_orders"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_my_order" />
+        <item
+            android:id="@+id/my_rewards"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_my_reward" />
+        <item
+            android:id="@+id/my_cart"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_my_cart" />
+        <item
+            android:id="@+id/my_wishlist"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_my_wishlist" />
+        <item
+            android:id="@+id/my_account"
+            android:icon="@drawable/ic_shopping_cart_holo_light"
+            android:title="@string/txt_my_account" />
+    </group>
+</menu>

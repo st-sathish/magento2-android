@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">RamvelTrader</string>
+    <string name="home">Home</string>
+
+    <string name="drawer_open">Drawer open</string>
+    <string name="drawer_close">Drawer close</string>
+
+    <string name="empty_email">Email is empty</string>
+    <string name="empty_password">Password is empty</string>
+    <string name="general_error">Error Occurred</string>
+    <string name="invalid_email">Invalid Email</string>
+    <string name="empty_first_name">First Name is Empty</string>
+    <string name="empty_last_name">Last Name is empty</string>
+    <string name="empty_city">City is empty</string>
+    <string name="empty_post_code">Pin code is empty</string>
+    <string name="empty_telephone">Phone number is empty</string>
+    <string name="empty_country">Country is empty</string>
+    <string name="empty_state">State is empty</string>
+    <string name="empty_street">Street is empty</string>
+
+    <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
+    <string name="api_default_error">Something wrong happened!</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
+
+    <string name="Rs">\u20B9</string>
+    <string name="btn_txt_cart">Add to Cart</string>
+    <string name="btn_txt_wish_list">Add to Wish List</string>
+    <string name="short_description">Short Description</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="related_product">Related Products</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="symbol_remove_item">-</string>
+    <string name="symbol_add_item">+</string>
+    <string name="default_item_value">1</string>
+    <string name="checkout">Checkout</string>
+    <string name="cart_default_value">0</string>
+
+    <!-- billing address -->
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_arrow">Collapse/Expand arrow</string>
+    <string name="btn_place_order">Place Order</string>
+    <string name="btn_continue">Continue</string>
+    <string name="btn_change">Change</string>
+    <string name="lbl_shipping_address">Shipping Address</string>
+    <string name="placeholder_text">Placeholder</string>
+
+    <!-- menu -->
+    <string name="txt_retail">RETAIL</string>
+    <string name="txt_wholesale">WHOLESALE</string>
+    <string name="txt_my_order">My Order</string>
+    <string name="txt_my_reward">My Reward</string>
+    <string name="txt_my_cart">My Cart</string>
+    <string name="txt_my_wishlist">My Wishlist</string>
+    <string name="txt_my_account">My Account</string>
+</resources>
