@@ -10,8 +10,6 @@ import java.util.List;
 
 public final class SessionStore {
 
-    public static List<CategoryResponse> sSelectedExpandableCategory = null;
-
     public static CategoryResponse sSelectedCategory = null;
 
     public static List<StockKeepingUnitResponse> sStockKeepingUnits = Collections.emptyList();
@@ -21,6 +19,8 @@ public final class SessionStore {
     public static String accessToken = "";
 
     public static int quoteId = 0;
+
+    public static String sSelectedMenu = null;
 
     private SessionStore() {
 

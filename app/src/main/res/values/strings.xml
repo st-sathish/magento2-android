@@ -56,4 +56,7 @@
     <string name="txt_my_cart">My Cart</string>
     <string name="txt_my_wishlist">My Wishlist</string>
     <string name="txt_my_account">My Account</string>
+
+    <string name="txt_contact_us">Contact Us</string>
+    <string name="txt_about_us">About Us</string>
 </resources>

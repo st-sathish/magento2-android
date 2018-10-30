@@ -9,7 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -22,12 +21,10 @@ import com.ramveltrader.data.SessionStore;
 import com.ramveltrader.data.network.models.Address;
 import com.ramveltrader.data.network.models.CartRequest;
 import com.ramveltrader.data.network.models.CartResponse;
-import com.ramveltrader.data.network.models.CategoryResponse;
 import com.ramveltrader.data.network.models.ProductResponse;
 import com.ramveltrader.fragments.address.ShippingAddressFragment;
-import com.ramveltrader.fragments.category.ExpCategoryFragment;
+import com.ramveltrader.fragments.category.CategoryFragment;
 import com.ramveltrader.fragments.comingsoon.ComingSoonFragment;
-import com.ramveltrader.fragments.drawer.FragmentDrawer;
 import com.ramveltrader.fragments.home.HomeFragment;
 import com.ramveltrader.fragments.mycart.MyCartFragment;
 import com.ramveltrader.fragments.product.ProductListFragment;
@@ -41,7 +38,7 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     public static final int FRAGMENT_DEFAULT = 1;
     public static final int FRAGMENT_HOME = 2;
-    public static final int FRAGMENT_EXP_CATEGORY = 3;
+    public static final int FRAGMENT_CATEGORY = 3;
     public static final int FRAGMENT_DETAIL_LIST_PRODUCT = 4;
     public static final int FRAGMENT_DETAILS_PRODUCT = 5;
     public static final int FRAGMENT_SHIPPING_ADDRESS = 6;
@@ -90,9 +87,8 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
                 title = "Home";
                 fragment = HomeFragment.newInstance(title);
                 break;
-            case FRAGMENT_EXP_CATEGORY:
-                title = "";
-                fragment = ExpCategoryFragment.newInstance(title);
+            case FRAGMENT_CATEGORY:
+                fragment = CategoryFragment.newInstance(aTitle);
                 break;
             case FRAGMENT_DETAIL_LIST_PRODUCT:
                 title = "";
@@ -196,10 +192,11 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        SessionStore.sSelectedMenu = menuItem.getTitle().toString();
         switch (menuItem.getItemId()) {
             case R.id.retail:
-                break;
             case R.id.whole_sale:
+                displayView(FRAGMENT_CATEGORY, menuItem.getTitle().toString(), true);
                 break;
             default:
                 displayView(LandingPageActivity.FRAGMENT_COMING_SOON, "Coming Soon", false);
