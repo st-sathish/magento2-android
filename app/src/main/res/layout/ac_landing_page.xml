@@ -7,38 +7,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.landingpage.LandingPageActivity">
 
-    <LinearLayout
+    <ViewFlipper android:id="@+id/vf"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content" >
 
-        <LinearLayout
-            android:id="@+id/container_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include
-                android:id="@+id/toolbar"
-                layout="@layout/toolbar" />
-        </LinearLayout>
-
-        <!-- The main content view -->
-        <FrameLayout
-            android:id="@+id/fragment_container"
+        <include android:id="@+id/app_bar_main"
+            layout="@layout/app_bar_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-        <!-- The main content view -->
-    </LinearLayout>
 
-    <!--<fragment
-        android:id="@+id/fragment_navigation_drawer"
-        android:name="com.ramveltrader.fragments.drawer.FragmentDrawer"
-        android:layout_width="@dimen/nav_drawer_width"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:layout="@layout/fr_navigation_drawer"
-        tools:layout="@layout/fr_navigation_drawer" />-->
+       <!-- <include android:id="@+id/non_app_bar_main"
+            layout="@layout/non_app_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>-->
+
+    </ViewFlipper>
+
+    <!--<include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
 
     <!-- The navigation drawer -->
     <android.support.design.widget.NavigationView
@@ -51,4 +39,5 @@
         app:menu="@menu/drawer_menu"
         android:theme="@style/NavigationTheme"
         app:headerLayout="@layout/nav_header"/>
+
 </android.support.v4.widget.DrawerLayout>

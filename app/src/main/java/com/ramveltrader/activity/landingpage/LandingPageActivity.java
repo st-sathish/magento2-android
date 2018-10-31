@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 
 import com.ramveltrader.R;
@@ -56,6 +57,9 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
+    @BindView(R.id.vf)
+    ViewFlipper mViewFlipper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +84,12 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     }
 
     public void displayView(int position, String aTitle, boolean addToBackstack) {
+        if(position == FRAGMENT_HOME) {
+            mViewFlipper.setDisplayedChild(0);
+        } else {
+            // only toolbar
+            mViewFlipper.setDisplayedChild(0);
+        }
         Fragment fragment = null;
         String title = null;
         switch (position) {
