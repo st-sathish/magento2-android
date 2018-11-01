@@ -115,7 +115,7 @@ public class ProductListFragment extends BaseFragment implements ProductListMvp,
     public void onOpenProductOverview(View v, int position) {
         String pName = productListAdapter.getItem(position).getName();
         SessionStore.productDetail = productListAdapter.getItem(position);
-        switchFragment(LandingPageActivity.FRAGMENT_DETAILS_PRODUCT, pName, true);
+        switchFragment(LandingPageActivity.FRAGMENT_PRODUCT_DETAILS, pName, true);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.ramveltrader.activity.landingpage;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,8 +10,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -40,8 +43,8 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     public static final int FRAGMENT_DEFAULT = 1;
     public static final int FRAGMENT_HOME = 2;
     public static final int FRAGMENT_CATEGORY = 3;
-    public static final int FRAGMENT_DETAIL_LIST_PRODUCT = 4;
-    public static final int FRAGMENT_DETAILS_PRODUCT = 5;
+    public static final int FRAGMENT_DETAIL_PRODUCT_LIST = 4;
+    public static final int FRAGMENT_PRODUCT_DETAILS = 5;
     public static final int FRAGMENT_SHIPPING_ADDRESS = 6;
     public static final int FRAGMENT_MY_CART = 7;
     public static final int FRAGMENT_COMING_SOON = 0;
@@ -49,28 +52,34 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     //private FragmentDrawer drawerFragment;
     private LandingPageMvpPresenter<LandingPageMvpView> mPresenter = null;
 
-    @BindView(R.id.item_count)
-    TextView itemCount;
+    //@BindView(R.id.item_count)
+    //TextView itemCount;
 
     Address address = null;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
-    @BindView(R.id.vf)
-    ViewFlipper mViewFlipper;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+
+    AppBarLayout.LayoutParams mParams;
+
+    @BindView(R.id.search_bar_header)
+    LinearLayout mLinearLayoutSearchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_landing_page);
-        Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         setUnBinder(ButterKnife.bind(this));
+        // make config changes
+        mParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
         mPresenter = new LandingPagePresenter<>();
         mPresenter.onAttach(this);
 
-        // set hamburger icon toggle
+        // right place to set hamburger icon toggle
         setUpToggle(mToolbar);
 
         // add navigation view listener
@@ -85,10 +94,12 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     public void displayView(int position, String aTitle, boolean addToBackstack) {
         if(position == FRAGMENT_HOME) {
-            mViewFlipper.setDisplayedChild(0);
+            mParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL
+                    | AppBarLayout.LayoutParams.SCROLL_FLAG_ENTER_ALWAYS);
+            mLinearLayoutSearchBar.setVisibility(View.VISIBLE);
         } else {
-            // only toolbar
-            mViewFlipper.setDisplayedChild(0);
+            mParams.setScrollFlags(0);
+            mLinearLayoutSearchBar.setVisibility(View.GONE);
         }
         Fragment fragment = null;
         String title = null;
@@ -100,26 +111,25 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
             case FRAGMENT_CATEGORY:
                 fragment = CategoryFragment.newInstance(aTitle);
                 break;
-            case FRAGMENT_DETAIL_LIST_PRODUCT:
-                title = "";
-                fragment = ProductListFragment.newInstance(title);
+            case FRAGMENT_DETAIL_PRODUCT_LIST:
+                fragment = ProductListFragment.newInstance(aTitle);
                 break;
-            case FRAGMENT_DETAILS_PRODUCT:
+            case FRAGMENT_PRODUCT_DETAILS:
                 title = "";
-                fragment = ProductDetailFragment.newInstance(title);
+                fragment = ProductDetailFragment.newInstance(aTitle);
                 break;
             case FRAGMENT_SHIPPING_ADDRESS:
                 title = "";
-                fragment = ShippingAddressFragment.newInstance(title);
+                fragment = ShippingAddressFragment.newInstance(aTitle);
                 break;
             case FRAGMENT_MY_CART:
                 title = "";
-                fragment = MyCartFragment.newInstance(title);
+                fragment = MyCartFragment.newInstance(aTitle);
                 break;
             case FRAGMENT_DEFAULT:
             default:
                 title = "Coming Soon";
-                fragment = ComingSoonFragment.newInstance(title);
+                fragment = ComingSoonFragment.newInstance(aTitle);
                 break;
         }
         if (null != fragment) {
@@ -137,10 +147,10 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
         ft.commit();
     }
 
-    @OnClick(R.id.item_counter)
-    public void onCartClick() {
-        displayView(LandingPageActivity.FRAGMENT_MY_CART, "My Cart", true);
-    }
+//    @OnClick(R.id.item_counter)
+//    public void onCartClick() {
+//        displayView(LandingPageActivity.FRAGMENT_MY_CART, "My Cart", true);
+//    }
 
 
 //    @Override
@@ -159,9 +169,9 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @Override
     public void updateCartBadge(int qty) {
-        Integer count = Integer.parseInt(itemCount.getText().toString());
+       /* Integer count = Integer.parseInt(itemCount.getText().toString());
         count += qty;
-        itemCount.setText(String.valueOf(count));
+        itemCount.setText(String.valueOf(count));*/
     }
 
     @Override
@@ -197,13 +207,16 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @Override
     public String getCount() {
-        return itemCount.getText().toString();
+        return null;//itemCount.getText().toString();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         SessionStore.sSelectedMenu = menuItem.getTitle().toString();
         switch (menuItem.getItemId()) {
+            case R.id.menu_home:
+                displayView(FRAGMENT_HOME, menuItem.getTitle().toString(), true);
+                break;
             case R.id.retail:
             case R.id.whole_sale:
                 displayView(FRAGMENT_CATEGORY, menuItem.getTitle().toString(), true);
@@ -248,5 +261,12 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
                 mDrawerToggle.syncState();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
     }
 }

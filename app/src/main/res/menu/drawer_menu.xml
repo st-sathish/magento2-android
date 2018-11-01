@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single"
+        android:id="@+id/group_home">
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/ic_home_holo_light"
+            android:title="@string/txt_home" />
+    </group>
+
+    <group android:checkableBehavior="single"
         android:id="@+id/category">
         <item
             android:id="@+id/retail"

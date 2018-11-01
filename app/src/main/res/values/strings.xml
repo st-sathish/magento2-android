@@ -60,4 +60,5 @@
     <string name="txt_contact_us">Contact Us</string>
     <string name="txt_about_us">About Us</string>
     <string name="hint_search">Search for Products, Brands and More</string>
+    <string name="txt_home">Home</string>
 </resources>

@@ -78,7 +78,7 @@ public class CategoryFragment extends BaseFragment implements CategoryMvpView, E
     @Override
     public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
         SessionStore.sSelectedCategory = mCategoryExpandableListAdapter.getChild(groupPosition, childPosition);
-        switchFragment(LandingPageActivity.FRAGMENT_DETAIL_LIST_PRODUCT, SessionStore.sSelectedCategory.getName(), true);
+        switchFragment(LandingPageActivity.FRAGMENT_DETAIL_PRODUCT_LIST, SessionStore.sSelectedCategory.getName(), true);
         return false;
     }
 
