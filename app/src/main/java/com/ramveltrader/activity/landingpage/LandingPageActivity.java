@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +17,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 
 import com.ramveltrader.R;
@@ -36,7 +36,6 @@ import com.ramveltrader.fragments.product.detail.ProductDetailFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LandingPageActivity extends BaseAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LandingPageMvpView  {
 
@@ -49,11 +48,9 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     public static final int FRAGMENT_MY_CART = 7;
     public static final int FRAGMENT_COMING_SOON = 0;
 
-    //private FragmentDrawer drawerFragment;
     private LandingPageMvpPresenter<LandingPageMvpView> mPresenter = null;
 
-    //@BindView(R.id.item_count)
-    //TextView itemCount;
+    TextView mItemCount;
 
     Address address = null;
 
@@ -72,10 +69,10 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_landing_page);
-        setSupportActionBar(mToolbar);
         setUnBinder(ButterKnife.bind(this));
 
-        mToolbar.inflateMenu(R.menu.toolbar_menu);
+        // initialize to set default value
+        setSupportActionBar(mToolbar);
 
         // make config changes
         mParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
@@ -172,9 +169,14 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @Override
     public void updateCartBadge(int qty) {
-       /* Integer count = Integer.parseInt(itemCount.getText().toString());
+        String value = mItemCount.getText().toString();
+        if(value.equals("")) {
+            mItemCount.setText(String.valueOf(qty));
+            return;
+        }
+        Integer count = Integer.parseInt(value);
         count += qty;
-        itemCount.setText(String.valueOf(count));*/
+        mItemCount.setText(String.valueOf(count));
     }
 
     @Override
@@ -210,7 +212,7 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @Override
     public String getCount() {
-        return null;//itemCount.getText().toString();
+        return mItemCount.getText().toString();
     }
 
     @Override
@@ -264,5 +266,15 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
                 mDrawerToggle.syncState();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        View actionView = menuItem.getActionView();
+        mItemCount = actionView.findViewById(R.id.cart_badge);
+        updateCartBadge(100);
+        return super.onCreateOptionsMenu(menu);
     }
 }

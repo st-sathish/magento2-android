@@ -3,24 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_notification"
+        android:id="@+id/action_notification"
         android:icon="@drawable/ic_notifications_holo_dark"
         app:showAsAction="ifRoom"
         android:orderInCategory="100"
         android:title="@string/txt_search" />
 
     <item
-        android:id="@+id/menu_search"
+        android:id="@+id/action_search"
         android:icon="@drawable/ic_search_holo_dark"
         app:showAsAction="ifRoom"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/txt_search" />
 
     <item
-        android:id="@+id/menu_cart"
+        android:id="@+id/action_cart"
         android:icon="@drawable/ic_shopping_cart_holo_dark"
         app:showAsAction="ifRoom"
-        android:orderInCategory="200"
+        app:actionLayout="@layout/action_item_layout"
+        android:orderInCategory="300"
         android:title="@string/txt_my_cart" />
 
 </menu>
