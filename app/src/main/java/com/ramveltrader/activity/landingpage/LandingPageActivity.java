@@ -74,6 +74,9 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
         setContentView(R.layout.ac_landing_page);
         setSupportActionBar(mToolbar);
         setUnBinder(ButterKnife.bind(this));
+
+        mToolbar.inflateMenu(R.menu.toolbar_menu);
+
         // make config changes
         mParams = (AppBarLayout.LayoutParams) mToolbar.getLayoutParams();
         mPresenter = new LandingPagePresenter<>();
@@ -261,12 +264,5 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
                 mDrawerToggle.syncState();
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-        return true;
     }
 }

@@ -51,7 +51,6 @@
         </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <!--<include layout="@layout/content_main" />-->
     <!-- The main content view -->
     <FrameLayout
         android:id="@+id/fragment_container"

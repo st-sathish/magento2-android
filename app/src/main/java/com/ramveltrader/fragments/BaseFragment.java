@@ -38,7 +38,7 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         if(null != getArguments()) {
             mTitle = getArguments().getString(AppConstants.INTENT_PARAM_ONE);
         }
-        setHasOptionsMenu(false);
+        //setHasOptionsMenu(false);
     }
 
     @Override
