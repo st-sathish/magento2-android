@@ -10,6 +10,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,6 +65,8 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @BindView(R.id.search_bar_header)
     LinearLayout mLinearLayoutSearchBar;
+
+    SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,7 +193,6 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
         Integer q = Integer.parseInt(quantity);
         CartRequest.CartItem cartItem = new CartRequest.CartItem(SessionStore.quoteId, response.getSku(), q);
         CartRequest request = new CartRequest(cartItem);
-        System.out.println("quote id : " + SessionStore.quoteId);
         mPresenter.addCart(request);
     }
 
@@ -269,12 +271,48 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         final MenuItem menuItem = menu.findItem(R.id.action_cart);
         View actionView = menuItem.getActionView();
         mItemCount = actionView.findViewById(R.id.cart_badge);
         updateCartBadge(100);
+
+        // config search view
+        MenuItem searchView = menu.findItem( R.id.action_search);
+        mSearchView = (SearchView) searchView.getActionView();
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        // Detect SearchView icon clicks
+        /*searchView.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                //Nothing to do here
+                setItemsVisibility(menu, item, false);
+                return true; // Return true to expand action view
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                setItemsVisibility(menu, item, true);
+                return true; // Return true to collapse action view
+            }
+        });*/
         return super.onCreateOptionsMenu(menu);
     }
+
+    /*private void setItemsVisibility(Menu menu, MenuItem exception, boolean visible) {
+        for (int i=0; i<menu.size(); ++i) {
+            MenuItem item = menu.getItem(i);
+            if (item != exception) item.setVisible(visible);
+        }
+    }*/
 }
