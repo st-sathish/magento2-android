@@ -57,7 +57,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public void hideProgressBar() {
-        if(showingProgressBar) {
+        if(showingProgressBar && mProductDetails.size() > 0) {
             mProductDetails.remove(mProductDetails.size() - 1);
             notifyItemRemoved(mProductDetails.size() - 1);
         }
