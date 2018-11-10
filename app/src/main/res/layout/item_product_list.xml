@@ -21,17 +21,18 @@
         android:layout_gravity="center_vertical"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:layout_marginBottom="3dp"
         android:padding="5dp">
 
         <ImageView
             android:id="@+id/item_thumb"
             android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="5dp"
+            android:contentDescription="@string/placeholder_text"
             android:gravity="center_vertical"
-            android:scaleType="fitXY"
-            android:contentDescription="@string/placeholder_text" />
+            android:scaleType="fitXY" />
 
         <RelativeLayout
             android:id="@+id/top_icon_detail"

@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:indeterminateTint="@color/colorGreen"
         android:indeterminate="true"
-        style="?android:attr/progressBarStyleLarge"
         android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
