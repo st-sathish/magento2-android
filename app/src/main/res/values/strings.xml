@@ -34,7 +34,7 @@
     <string name="hint_quantity">Quantity</string>
     <string name="symbol_remove_item">-</string>
     <string name="symbol_add_item">+</string>
-    <string name="default_item_value">1</string>
+    <string name="default_item_value">0</string>
     <string name="checkout">Checkout</string>
     <string name="cart_default_value">0</string>
 

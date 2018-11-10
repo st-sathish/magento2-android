@@ -8,8 +8,8 @@ public final class ProductUtils {
 
     public static String increaseItemQuantity(String quantity) {
         int qty = Integer.valueOf(quantity);
-        if(qty < 1) {
-            return "1";
+        if(qty < 0) {
+            return "0";
         }
         qty += 1;
         return String.valueOf(qty);
@@ -17,8 +17,8 @@ public final class ProductUtils {
 
     public static String deceaseItemQuantity(String quantity) {
         int qty = Integer.valueOf(quantity);
-        if(qty <= 1) {
-            return "1";
+        if(qty <= 0) {
+            return "0";
         }
         qty -= 1;
         return String.valueOf(qty);

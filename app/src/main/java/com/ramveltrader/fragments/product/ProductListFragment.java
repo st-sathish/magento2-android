@@ -1,6 +1,7 @@
 package com.ramveltrader.fragments.product;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 
 import com.ramveltrader.R;
@@ -18,7 +18,6 @@ import com.ramveltrader.data.SessionStore;
 import com.ramveltrader.data.network.models.ProductResponse;
 import com.ramveltrader.decorators.ItemDecorationGridColumns;
 import com.ramveltrader.fragments.BaseFragment;
-import com.ramveltrader.listeners.EndlessRecyclerOnScrollListener;
 import com.ramveltrader.listeners.OnProductClickListener;
 import com.ramveltrader.utils.AppConstants;
 
@@ -36,8 +35,9 @@ public class ProductListFragment extends BaseFragment implements ProductListMvp,
 
     ProductListAdapter productListAdapter = null;
 
-    @BindView(R.id.progress_bar)
-    ProgressBar progressBar;
+    private int visibleThreshold = 5;
+
+    private int lastVisibleItem, totalItemCount;
 
     public ProductListFragment() {
 
@@ -63,7 +63,6 @@ public class ProductListFragment extends BaseFragment implements ProductListMvp,
     @Override
     public void stopEndlessLoading() {
         loadMoreRecord = false;
-        progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -78,7 +77,8 @@ public class ProductListFragment extends BaseFragment implements ProductListMvp,
     }
 
     @Override
-    public void update(List<ProductResponse> productResponses) {
+    public void update(final List<ProductResponse> productResponses) {
+        productListAdapter.hideProgressBar();
         productListAdapter.update(productResponses);
     }
 
@@ -88,13 +88,19 @@ public class ProductListFragment extends BaseFragment implements ProductListMvp,
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(productListAdapter);
+        productListAdapter.showProgressBar();
         mRecyclerView.addItemDecoration(new ItemDecorationGridColumns(10, 2));
-        mRecyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
+        // load more
+        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) mRecyclerView.getLayoutManager();
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onLoadMore() {
-                if(loadMoreRecord) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                totalItemCount = linearLayoutManager.getItemCount();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                if (!loadMoreRecord && totalItemCount <= (lastVisibleItem + visibleThreshold)) {
+                    productListAdapter.showProgressBar();
                     mPresenter.loadNextPage();
-                    progressBar.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -120,11 +126,11 @@ public class ProductListFragment extends BaseFragment implements ProductListMvp,
 
     @Override
     public void showEndlessSpinner() {
-        progressBar.setVisibility(View.VISIBLE);
+        loadMoreRecord = true;
     }
 
     @Override
     public void hideEndlessSpinner() {
-        progressBar.setVisibility(View.INVISIBLE);
+        loadMoreRecord = false;
     }
 }
