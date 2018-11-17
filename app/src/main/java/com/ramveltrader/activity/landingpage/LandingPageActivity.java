@@ -38,7 +38,7 @@ import com.ramveltrader.fragments.product.detail.ProductDetailFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LandingPageActivity extends BaseAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LandingPageMvpView  {
+public class LandingPageActivity extends BaseAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, LandingPageMvpView, View.OnClickListener  {
 
     public static final int FRAGMENT_DEFAULT = 1;
     public static final int FRAGMENT_HOME = 2;
@@ -274,6 +274,7 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         final MenuItem menuItem = menu.findItem(R.id.action_cart);
         View actionView = menuItem.getActionView();
+        actionView.setOnClickListener(this);
         mItemCount = actionView.findViewById(R.id.cart_badge);
 
         // config search view
@@ -313,4 +314,13 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
             if (item != exception) item.setVisible(visible);
         }
     }*/
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.action_cart:
+                displayView(LandingPageActivity.FRAGMENT_MY_CART, "My Cart ("+mItemCount.getText()+")", false);
+            break;
+        }
+    }
 }
