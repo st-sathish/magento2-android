@@ -198,7 +198,8 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
 
     @Override
     public void cartAddedCallback(CartResponse cartResponse) {
-        updateCartBadge(cartResponse.getQty());
+        //updateCartBadge(cartResponse.getQty());
+        updateCartBadge(1);
     }
 
     @Override
