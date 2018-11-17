@@ -245,13 +245,11 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
-                invalidateOptionsMenu();
             }
 
             @Override
@@ -276,7 +274,6 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
         final MenuItem menuItem = menu.findItem(R.id.action_cart);
         View actionView = menuItem.getActionView();
         mItemCount = actionView.findViewById(R.id.cart_badge);
-        updateCartBadge(100);
 
         // config search view
         MenuItem searchView = menu.findItem( R.id.action_search);

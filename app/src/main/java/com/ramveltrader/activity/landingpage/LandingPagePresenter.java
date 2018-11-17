@@ -27,7 +27,7 @@ public class LandingPagePresenter <V extends LandingPageMvpView> extends BasePre
 
                     @Override
                     public void onNext(CartListResponse cartListResponse) {
-                        getMvpView().updateCartBadge(cartListResponse.getItemsQty());
+                        getMvpView().updateCartBadge(cartListResponse.getItemsCount());
                     }
 
                     @Override
