@@ -34,12 +34,15 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/btn_back"
+                    android:text="@string/txt_shopping"
                     android:textColor="@color/white"
                     android:layout_gravity="center_vertical"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
+                    android:paddingStart="30dp"
+                    android:paddingEnd="0dp"
+                    android:drawableStart="@drawable/ic_add_shopping_cart_white"
                     android:background="@color/DarkGray"
-                    android:id="@+id/btn_back" />
+                    android:id="@+id/btn_shopping" />
 
             </LinearLayout>
             <LinearLayout
@@ -50,10 +53,10 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/btn_continue"
+                    android:text="@string/txt_place_order"
                     android:textColor="@color/white"
                     android:background="@color/colorGreen"
-                    android:id="@+id/btn_continue" />
+                    android:id="@+id/btn_place_order" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

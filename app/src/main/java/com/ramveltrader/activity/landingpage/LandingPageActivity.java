@@ -27,6 +27,7 @@ import com.ramveltrader.data.network.models.Address;
 import com.ramveltrader.data.network.models.CartRequest;
 import com.ramveltrader.data.network.models.CartResponse;
 import com.ramveltrader.data.network.models.ProductResponse;
+import com.ramveltrader.fragments.address.AddressFragment1;
 import com.ramveltrader.fragments.address.ShippingAddressFragment;
 import com.ramveltrader.fragments.category.CategoryFragment;
 import com.ramveltrader.fragments.comingsoon.ComingSoonFragment;
@@ -48,6 +49,7 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     public static final int FRAGMENT_SHIPPING_ADDRESS = 6;
     public static final int FRAGMENT_MY_CART = 7;
     public static final int FRAGMENT_COMING_SOON = 0;
+    public static final int FRAGMENT_ADDRESS1 = 8;
 
     private LandingPageMvpPresenter<LandingPageMvpView> mPresenter = null;
 
@@ -128,6 +130,9 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
             case FRAGMENT_MY_CART:
                 title = "";
                 fragment = MyCartFragment.newInstance(aTitle);
+                break;
+            case FRAGMENT_ADDRESS1:
+                fragment = AddressFragment1.newInstance(aTitle);
                 break;
             case FRAGMENT_DEFAULT:
             default:

@@ -46,7 +46,9 @@
     <string name="btn_continue">Continue</string>
     <string name="btn_change">Change</string>
     <string name="lbl_shipping_address">Shipping Address</string>
+    <string name="lbl_billing_address">Billing Address</string>
     <string name="placeholder_text">Placeholder</string>
+    <string name="txt_place_order">Place Order</string>
 
     <!-- menu -->
     <string name="txt_retail">RETAIL</string>
@@ -66,4 +68,6 @@
     <string name="txt_quantity">Quantity</string>
     <string name="txt_update">Update</string>
     <string name="txt_remove">Remove</string>
+    <string name="txt_shopping">Shopping</string>
+    <string name="txt_proceed">Proceed</string>
 </resources>
