@@ -12,6 +12,8 @@ public interface LandingPageMvpView extends MvpView {
 
     void doIncrementCartCount(Integer count);
 
+    void doIncrementCartCount();
+
     void addCartToMyAccount(ProductResponse response, String quantity);
 
     void cartAddedCallback(CartResponse cartResponse);
@@ -21,4 +23,8 @@ public interface LandingPageMvpView extends MvpView {
     Address getAddress();
 
     String getCount();
+
+    void doDecrementCartCount();
+
+    void updateCartCount(Integer count);
 }

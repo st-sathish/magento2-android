@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.ramveltrader.R;
 import com.ramveltrader.data.network.models.CartResponse;
+import com.ramveltrader.utils.ProductUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,7 @@ public class CartDetailListAdapter extends RecyclerView.Adapter<CartDetailListAd
 
     public interface OnCartProductListener {
         void removedCartItem(View v, int position);
+
         void updateCartItem(String quantity, int position);
     }
 
@@ -90,31 +92,46 @@ public class CartDetailListAdapter extends RecyclerView.Adapter<CartDetailListAd
         @BindView(R.id.item_quantity)
         TextView quantity;
 
-        //@BindView(R.id.item_remove_cart_product)
+        @BindView(R.id.item_remove_cart_product)
         Button itemRemoveCartProduct;
 
-        //@BindView(R.id.item_update_cart_product)
+        @BindView(R.id.item_update_cart_product)
         Button itemUpdateCartProduct;
+
+        @BindView(R.id.add_item)
+        TextView addItem;
+
+        @BindView(R.id.remove_item)
+        TextView removeItem;
 
 
         public CartDetailViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
             v.setOnClickListener(this);
-            //itemRemoveCartProduct.setOnClickListener(this);
-            //itemUpdateCartProduct.setOnClickListener(this);
+            itemRemoveCartProduct.setOnClickListener(this);
+            itemUpdateCartProduct.setOnClickListener(this);
+            removeItem.setOnClickListener(this);
+            addItem.setOnClickListener(this);
             v.setTag(this); //By calling setTag, all buttons can use the same listener
         }
 
         @Override
         public void onClick(View view) {
-            /*switch (view.getId()) {
+            switch (view.getId()) {
                 case R.id.item_remove_cart_product :
                     mOnCartProductListener.removedCartItem(view, getAdapterPosition());
                     break;
                 case R.id.item_update_cart_product :
                     mOnCartProductListener.updateCartItem(quantity.getText().toString(), getAdapterPosition());
-            }*/
+                    break;
+                case R.id.add_item:
+                    quantity.setText(ProductUtils.increaseItemQuantity(quantity.getText().toString()));
+                    break;
+                case R.id.remove_item:
+                    quantity.setText(ProductUtils.deceaseItemQuantity(quantity.getText().toString()));
+                    break;
+            }
         }
     }
 }

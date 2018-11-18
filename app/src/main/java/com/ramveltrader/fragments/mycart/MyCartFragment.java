@@ -143,10 +143,7 @@ public class MyCartFragment extends BaseFragment implements MyCartMvpView, CartD
     public void removeCartCallback(Boolean success) {
         if (success) {
             CartResponse response = cartDetailListAdapter.getItem(currentPosition);
-            LandingPageActivity activity = (LandingPageActivity)getActivity();
-            if (activity != null) {
-                activity.updateCartBadge(0 - response.getQty());
-            }
+            decreaseCartCount();
             cartDetailListAdapter.remove(currentPosition);
             cartDetailListAdapter.notifyItemRemoved(currentPosition);
             Toast.makeText(getActivity(), "Successfully Removed", Toast.LENGTH_LONG).show();
@@ -159,14 +156,19 @@ public class MyCartFragment extends BaseFragment implements MyCartMvpView, CartD
     public void updateCartItem(String quantity, int position) {
         CartResponse response = cartDetailListAdapter.getItem(position);
         Integer q = Integer.parseInt(quantity);
-        LandingPageActivity activity = (LandingPageActivity)getActivity();
-        if (activity != null) {
-            activity.updateCartBadge(q - response.getQty());
-        }
+//        LandingPageActivity activity = (LandingPageActivity)getActivity();
+//        if (activity != null) {
+//            activity.updateCartBadge(q - response.getQty());
+//        }
         CartRequest2.CartItem cartItem = new CartRequest2.CartItem(Integer.parseInt(response.getQuoteId()),  response.getItemId(), q);
         CartRequest2 request = new CartRequest2(cartItem);
         mPresenter.updateItemToCart(request, response.getItemId().toString());
         response.setQty(q);
         cartDetailListAdapter.notifyItemChanged(position);
+    }
+
+    @Override
+    public void updatedCartCallback(CartResponse cartResponse) {
+        Toast.makeText(getActivity(), "Successfully Updated", Toast.LENGTH_LONG).show();
     }
 }

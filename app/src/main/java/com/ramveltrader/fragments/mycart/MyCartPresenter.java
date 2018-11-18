@@ -183,7 +183,7 @@ public class MyCartPresenter<V extends MyCartMvpView> extends BasePresenter<V> i
 
                     @Override
                     public void onNext(CartResponse cartResponse) {
-                        //getMvpView().addCartCallback(cartResponse);
+                        getMvpView().updatedCartCallback(cartResponse);
                     }
 
                     @Override

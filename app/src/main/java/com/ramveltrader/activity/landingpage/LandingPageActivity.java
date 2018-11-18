@@ -171,6 +171,35 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
     }
 
     @Override
+    public void doIncrementCartCount() {
+        String value = mItemCount.getText().toString();
+        if(value.equals("")) {
+            updateCartCount(0);
+            return;
+        }
+        int count = Integer.parseInt(value) + 1;
+        updateCartCount(count);
+    }
+
+    @Override
+    public void doDecrementCartCount() {
+        String value = mItemCount.getText().toString();
+        if(value.equals("")) {
+            updateCartCount(0);
+            return;
+        }
+        if(Integer.parseInt(value) > 0) {
+            int count = Integer.parseInt(value) - 1;
+            updateCartCount(count);
+        }
+    }
+
+    @Override
+    public void updateCartCount(Integer count) {
+        mItemCount.setText(String.valueOf(count));
+    }
+
+    @Override
     public void updateCartBadge(int qty) {
         String value = mItemCount.getText().toString();
         if(value.equals("")) {
