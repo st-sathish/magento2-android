@@ -357,4 +357,8 @@ public class LandingPageActivity extends BaseAppCompatActivity implements Naviga
             break;
         }
     }
+
+    public void resetCartCount() {
+        mItemCount.setText(R.string.cart_default_value);
+    }
 }

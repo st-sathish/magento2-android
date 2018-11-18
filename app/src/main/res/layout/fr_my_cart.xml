@@ -53,10 +53,10 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/txt_place_order"
+                    android:text="@string/btn_continue"
                     android:textColor="@color/white"
                     android:background="@color/colorGreen"
-                    android:id="@+id/btn_place_order" />
+                    android:id="@+id/btn_continue" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

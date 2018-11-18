@@ -94,10 +94,9 @@ public class MyCartFragment extends BaseFragment implements MyCartMvpView, CartD
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //mPresenter.getCartItems();
     }
 
-    @OnClick(R.id.btn_place_order)
+    @OnClick(R.id.btn_continue)
     public void onClick() {
         LandingPageActivity activity = (LandingPageActivity)getActivity();
         if(activity.getCount().equals("0") ){

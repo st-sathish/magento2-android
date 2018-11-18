@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> implements LoginMvpPresenter<V> {
 
     @Override
-    public void onLoginBtnClick(String email, String password) {
+    public void onLoginBtnClick(final String email, String password) {
         if (email == null || email.isEmpty()) {
             getMvpView().onError(R.string.empty_email);
             return;
@@ -46,6 +46,7 @@ public class LoginPresenter <V extends LoginMvpView> extends BasePresenter<V> im
                     @Override
                     public void onNext(String accessToken) {
                         SessionStore.accessToken = accessToken;
+                        SessionStore.sEmail = email;
                     }
 
                     @Override

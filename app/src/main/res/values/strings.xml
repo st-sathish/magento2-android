@@ -70,4 +70,5 @@
     <string name="txt_remove">Remove</string>
     <string name="txt_shopping">Shopping</string>
     <string name="txt_proceed">Proceed</string>
+    <string name="txt_order">Order</string>
 </resources>

@@ -24,6 +24,7 @@
         android:background="@drawable/badge_background"
         android:gravity="center"
         android:padding="3dp"
+        android:text="@string/cart_default_value"
         android:textColor="@android:color/white"
         android:textSize="10sp"/>
 

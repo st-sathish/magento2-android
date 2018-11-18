@@ -158,6 +158,7 @@ public class AddressPresenter<V extends AddressMvp> extends BasePresenter<V> imp
                             String billingAddress = joinBillingAddress(result.getJSONObject("billing_address"));
                             String shippingAddress = joinShippingAddress(result.getJSONObject("shipping_address"));
                             getMvpView().shippingBillingAddressCallback(billingAddress, shippingAddress);
+                            SessionStore.sSetAddress = result;
                         } catch (JSONException e) {
                             AppLog.error(TAG, e.getMessage());
                         }

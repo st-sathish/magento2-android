@@ -130,10 +130,15 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/txt_proceed"
+                    android:text="@string/txt_place_order"
                     android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:background="@color/colorGreen"
-                    android:id="@+id/btn_proceed" />
+                    android:paddingEnd="0dp"
+                    android:paddingStart="30dp"
+                    android:drawableStart="@drawable/ic_shopping_cart_holo_dark"
+                    android:id="@+id/btn_place_order" />
             </LinearLayout>
         </LinearLayout>
 
