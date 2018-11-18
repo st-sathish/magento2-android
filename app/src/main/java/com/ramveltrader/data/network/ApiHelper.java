@@ -1,6 +1,7 @@
 package com.ramveltrader.data.network;
 
 
+import com.ramveltrader.data.network.address.AddressApi;
 import com.ramveltrader.data.network.cart.CartApi;
 import com.ramveltrader.data.network.order.OrderApi;
 import com.ramveltrader.data.network.product.ProductApi;
@@ -17,4 +18,6 @@ public interface ApiHelper {
     CartApi getCartApi();
 
     OrderApi getOrderApi();
+
+    AddressApi getAddressApi();
 }

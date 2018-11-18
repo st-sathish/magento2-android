@@ -11,4 +11,6 @@ public interface AddressMvpPresenter<V extends MvpView> extends MvpPresenter<V> 
     void placeOrder(OrderRequest order);
 
     void setAddress(AddressModel address);
+
+    void getAddress();
 }

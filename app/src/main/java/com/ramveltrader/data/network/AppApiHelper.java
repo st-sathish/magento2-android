@@ -1,6 +1,8 @@
 package com.ramveltrader.data.network;
 
 
+import com.ramveltrader.data.network.address.AddressApi;
+import com.ramveltrader.data.network.address.AddressApiImpl;
 import com.ramveltrader.data.network.cart.CartApi;
 import com.ramveltrader.data.network.cart.CartApiImpl;
 import com.ramveltrader.data.network.order.OrderApi;
@@ -22,6 +24,13 @@ public class AppApiHelper implements ApiHelper {
 
     private OrderApi orderApi;
 
+    private AddressApi addressApi;
+
+    @Override
+    public AddressApi getAddressApi() {
+        return this.addressApi;
+    }
+
     public AppApiHelper() {
         // manage all api helpers
         productApi = new ProductApiImpl();
@@ -29,6 +38,7 @@ public class AppApiHelper implements ApiHelper {
         mAppApiHeader = new AppApiHeader();
         mCartApi = new CartApiImpl();
         orderApi = new OrderApiImpl();
+        addressApi = new AddressApiImpl();
     }
 
     @Override

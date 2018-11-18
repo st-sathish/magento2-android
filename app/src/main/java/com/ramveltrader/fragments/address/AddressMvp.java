@@ -8,4 +8,5 @@ public interface AddressMvp extends MvpView {
 
     void orderCallback();
 
+    void shippingBillingAddressCallback(String billingAddress, String shippingAddress);
 }

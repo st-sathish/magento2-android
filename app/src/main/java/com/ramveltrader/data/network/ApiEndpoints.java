@@ -44,5 +44,11 @@ public final class ApiEndpoints {
     /** Place Order */
     public static final String API_PLACE_ORDER = API_URL +"/carts/mine/payment-information";
 
+    /** get billing address */
+    public static final String API_BILLING_ADDRESS = API_URL +"/customers/me/billingAddress";
+
+    /** get shipping address */
+    public static final String API_SHIPPING_ADDRESS = API_URL +"/customers/me/shippingAddress";
+
     public static final String HEADER_AUTHORIZATION = "Authorization";
 }

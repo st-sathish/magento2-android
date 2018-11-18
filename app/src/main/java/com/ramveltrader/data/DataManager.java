@@ -44,4 +44,8 @@ public interface DataManager {
 
     Observable<JSONObject> setAddress(AddressModel address);
 
+    Observable<JSONObject> getBillingAddress();
+
+    Observable<JSONObject> getShippingAddress();
+
 }

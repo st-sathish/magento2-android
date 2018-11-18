@@ -19,6 +19,11 @@ public class AddressFragment extends BaseFragment implements AddressMvp {
     //@BindView(R.id.expandableView)
     //ExpandablePlaceHolderView expandablePlaceHolderView;
 
+    @Override
+    public void shippingBillingAddressCallback(String billingAddress, String shippingAddress) {
+
+    }
+
     /*@BindView(R.id.first_name)
     EditText firstName;
 

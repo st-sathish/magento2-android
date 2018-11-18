@@ -77,6 +77,16 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Observable<JSONObject> getBillingAddress() {
+        return mApiHelper.getAddressApi().getBillingAddress();
+    }
+
+    @Override
+    public Observable<JSONObject> getShippingAddress() {
+        return mApiHelper.getAddressApi().getShippingAddress();
+    }
+
+    @Override
     public Observable<JSONObject> setAddress(AddressModel address) {
         return mApiHelper.getOrderApi().setAddress(address);
     }
