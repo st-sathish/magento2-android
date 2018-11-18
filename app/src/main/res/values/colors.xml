@@ -22,4 +22,6 @@
 
     <color name="colorGray1">#808080</color>
     <color name="colorDimGray">#696969</color>
+    <color name="colorDangerDark">#CC0000</color>
+    <color name="colorDanger">#ff4444</color>
 </resources>

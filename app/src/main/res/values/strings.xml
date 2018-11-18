@@ -62,4 +62,8 @@
     <string name="hint_search">Search for Products, Brands and More</string>
     <string name="txt_home">Home</string>
     <string name="txt_search">Search</string>
+    <string name="btn_back">Back</string>
+    <string name="txt_quantity">Quantity</string>
+    <string name="txt_update">Update</string>
+    <string name="txt_remove">Remove</string>
 </resources>

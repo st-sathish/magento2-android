@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:weightSum="10"
     android:orientation="vertical">
 
@@ -10,39 +10,52 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight = "8.5" />
+        android:layout_weight="9.2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight = "1.0"
-        android:layout_height="0dp"
-        android:layout_gravity="bottom|center_horizontal">
-        <Button
+        android:layout_weight="0.8"
+        android:orientation="vertical"
+        android:layout_height="0dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/btn_continue"
-            android:textColor="@color/white"
-            android:background="@color/colorGreen"
-            android:id="@+id/goto_address" />
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:baselineAligned="false"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/btn_back"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:background="@color/DarkGray"
+                    android:id="@+id/btn_back" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                android:layout_height="match_parent">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/btn_continue"
+                    android:textColor="@color/white"
+                    android:background="@color/colorGreen"
+                    android:id="@+id/btn_continue" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_weight = "0.5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginEnd="10dp">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/progress_bar"
-            android:visibility="invisible"
-            android:indeterminateTint="@color/colorGreen"
-            android:layout_height="wrap_content" />
-
-
-    </RelativeLayout>
-
 
 </LinearLayout>

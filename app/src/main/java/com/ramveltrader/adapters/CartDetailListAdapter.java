@@ -78,7 +78,7 @@ public class CartDetailListAdapter extends RecyclerView.Adapter<CartDetailListAd
 
     class CartDetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener  {
 
-        @BindView(R.id.item_thumb)
+        //@BindView(R.id.item_thumb)
         ImageView imageView;
 
         @BindView(R.id.item_name)
@@ -88,12 +88,12 @@ public class CartDetailListAdapter extends RecyclerView.Adapter<CartDetailListAd
         TextView price;
 
         @BindView(R.id.item_quantity)
-        EditText quantity;
+        TextView quantity;
 
-        @BindView(R.id.item_remove_cart_product)
+        //@BindView(R.id.item_remove_cart_product)
         Button itemRemoveCartProduct;
 
-        @BindView(R.id.item_update_cart_product)
+        //@BindView(R.id.item_update_cart_product)
         Button itemUpdateCartProduct;
 
 
@@ -101,20 +101,20 @@ public class CartDetailListAdapter extends RecyclerView.Adapter<CartDetailListAd
             super(v);
             ButterKnife.bind(this, v);
             v.setOnClickListener(this);
-            itemRemoveCartProduct.setOnClickListener(this);
-            itemUpdateCartProduct.setOnClickListener(this);
+            //itemRemoveCartProduct.setOnClickListener(this);
+            //itemUpdateCartProduct.setOnClickListener(this);
             v.setTag(this); //By calling setTag, all buttons can use the same listener
         }
 
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
+            /*switch (view.getId()) {
                 case R.id.item_remove_cart_product :
                     mOnCartProductListener.removedCartItem(view, getAdapterPosition());
                     break;
                 case R.id.item_update_cart_product :
                     mOnCartProductListener.updateCartItem(quantity.getText().toString(), getAdapterPosition());
-            }
+            }*/
         }
     }
 }

@@ -38,8 +38,8 @@ public class MyCartFragment extends BaseFragment implements MyCartMvpView, CartD
     CartDetailListAdapter cartDetailListAdapter = null;
     int currentPosition = -1;
 
-    @BindView(R.id.progress_bar)
-    ProgressBar progressBar;
+    //@BindView(R.id.progress_bar)
+    //ProgressBar progressBar;
 
 
     Address address = null;
@@ -97,7 +97,7 @@ public class MyCartFragment extends BaseFragment implements MyCartMvpView, CartD
         //mPresenter.getCartItems();
     }
 
-    @OnClick(R.id.goto_address)
+    @OnClick(R.id.btn_continue)
     public void onClick() {
         LandingPageActivity activity = (LandingPageActivity)getActivity();
         if(activity.getCount().equals("0") ){
@@ -105,6 +105,11 @@ public class MyCartFragment extends BaseFragment implements MyCartMvpView, CartD
         } else {
             switchFragment(LandingPageActivity.FRAGMENT_SHIPPING_ADDRESS, "Billing Address", true);
         }
+    }
+
+    @OnClick(R.id.btn_back)
+    public void onBackClick() {
+        goBack();
     }
 
     public void initializeRecyclerViewAdapter() {
